@@ -14,12 +14,12 @@ export class FilterTablePipe implements PipeTransform {
       return this.sortData(tableDataArr, sorting);
     }
     const keys = headings.map(heading => heading.key);
-    let matchingArr = tableDataArr.filter(row => {
+    const matchingArr = tableDataArr.filter(row => {
       return keys.find(key => {
         const query = searchTerm.toLowerCase();
         return row[key] && row[key].toLowerCase().includes(query);
-      })
-    })
+      });
+    });
     return this.sortData(matchingArr, sorting);
   }
 
@@ -34,7 +34,7 @@ export class FilterTablePipe implements PipeTransform {
       } else if (sortType === SortType.DESC) {
         return b[column] < a[column] ? -1 : 1;
       }
-    })
+    });
   }
 
 }

@@ -1,4 +1,4 @@
-import { SortType } from "../constants/sort-type";
+import { SortType } from '../constants/sort-type';
 
 export interface ISorting {
   column: string;

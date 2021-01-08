@@ -37,8 +37,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         data: users,
         tableClasses: 'table-striped',
         sortingColumns: ['first', 'last', 'email']
-      }
-    })
+      };
+    });
   }
 
   ngOnDestroy() {

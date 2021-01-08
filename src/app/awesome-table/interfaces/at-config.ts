@@ -9,5 +9,5 @@ export interface IAwesomeTableConfig {
   tableClasses?: string;
   searchEnabled?: boolean;
   searchInputPlaceholder?: string;
-  sortingColumns?: string[]
+  sortingColumns?: string[];
 }

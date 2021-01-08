@@ -20,7 +20,7 @@ export class TableComponent implements OnInit, OnDestroy {
   @Input() atConfig: IAwesomeTableConfig;
   tableForm = new FormGroup({
     searchTerm: new FormControl('', [])
-  })
+  });
   filteredTableItems = [];
   isComponentAlive = false;
   filterTablePipe = new FilterTablePipe();
@@ -35,7 +35,7 @@ export class TableComponent implements OnInit, OnDestroy {
       ...this.atConfig,
     } : {
       ...DEFAULT_AT_CONFIG
-    }
+    };
     this.filterItems(this.atConfig.data, null, this.atConfig.headings);
     this.handleSearchQuery();
     this.configureSorting();
@@ -50,16 +50,16 @@ export class TableComponent implements OnInit, OnDestroy {
     return {
       column,
       sortType: this.sortableColumns[column]
-    }
+    };
   }
 
-  configureSorting(config:IAwesomeTableConfig = this.atConfig) {
+  configureSorting(config: IAwesomeTableConfig = this.atConfig) {
     if (!config.sortingColumns || !config.sortingColumns.length) {
       return;
     }
     config.sortingColumns.map(column => {
       this.sortableColumns[column] = SortType.None;
-    })
+    });
   }
 
   sortByColumn(column: string) {
@@ -76,9 +76,9 @@ export class TableComponent implements OnInit, OnDestroy {
         break;
       case SortType.DESC:
         sortType = SortType.None;
-      break;
+        break;
     }
-    for (let key in this.sortableColumns) {
+    for (const key in this.sortableColumns) {
       this.sortableColumns[key] = key === column ? sortType : SortType.None;
     }
     const searchTerm = this.tableForm.get('searchTerm').value;
@@ -97,11 +97,11 @@ export class TableComponent implements OnInit, OnDestroy {
       .subscribe(searchTerm => {
         const sorting: ISorting = this.getCurrentSortedColumn();
         this.filterItems(this.atConfig.data, searchTerm, this.atConfig.headings, sorting);
-      })
+      });
   }
 
   filterItems(dataArr, searchTerm, headings, sorting: ISorting = null) {
-    this.filteredTableItems = [...this.filterTablePipe.transform(dataArr, searchTerm, headings, sorting)]
+    this.filteredTableItems = [...this.filterTablePipe.transform(dataArr, searchTerm, headings, sorting)];
   }
 
   dropItem(event: CdkDragDrop<string[]>) {

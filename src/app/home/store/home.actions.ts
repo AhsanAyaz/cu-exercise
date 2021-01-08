@@ -6,7 +6,7 @@ export const HOME_ACTIONS = {
   GET_USERS: `${PREFIX} Get Users`,
   GET_USERS_SUCCESS: `${PREFIX} Get Users Success`,
   GET_USERS_FAILURE: `${PREFIX} Get Users Failure`,
-}
+};
 
 
 export const getUsers = createAction(

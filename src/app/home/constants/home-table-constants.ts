@@ -9,4 +9,4 @@ export const HOME_TABLE_CONSTANTS = {
     key: 'email',
     label: 'Email'
   }]
-}
+};

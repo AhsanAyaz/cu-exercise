@@ -1,0 +1,19 @@
+<div class="home">
+  <div class="home__heading">
+    <h4>Awesome Table Example</h4>
+  </div>
+  <div class="home__content">
+    <ng-container *ngIf="!(loadingUsers$ | async) && (users$ | async) && tableConfig">
+      <at-table [atConfig]="tableConfig"></at-table>
+    </ng-container>
+    <ng-container *ngIf="!(loadingUsers$ | async) && !(users$ | async)">
+      Could not load users
+    </ng-container>
+    <ng-container *ngIf="(loadingUsers$ | async)">
+      Loading...
+    </ng-container>
+
+  </div>
+</div>
+
+

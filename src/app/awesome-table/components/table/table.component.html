@@ -1,0 +1,29 @@
+<form [formGroup]="tableForm">
+  <div class="mb-3" *ngIf="atConfig.searchEnabled">
+    <input formControlName="searchTerm" type="text" class="form-control" id="searchInput" placeholder="{{atConfig.searchInputPlaceholder}}">
+  </div>
+</form>
+<cdk-virtual-scroll-viewport [itemSize]="40"  style="height: 300px; width: 100%;">
+  <table class="table {{atConfig.tableClasses}} " style="width: 100%;" cdkDropListGroup>
+    <thead>
+      <tr cdkDropList
+      cdkDropListOrientation="horizontal"
+      [cdkDropListData]="atConfig.headings" (cdkDropListDropped)="dropItem($event)">
+        <th cdkDrag scope="col" *ngFor="let heading of atConfig.headings" (click)="sortByColumn(heading.key)">
+          {{heading.label}}
+          <ng-container [ngSwitch]="sortableColumns[heading.key]">
+            <mat-icon *ngSwitchCase="sortType.ASC" aria-hidden="false" aria-label="Example home icon">arrow_downward</mat-icon>
+            <mat-icon *ngSwitchCase="sortType.DESC" aria-hidden="false" aria-label="Example home icon">arrow_upward</mat-icon>
+          </ng-container>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *cdkVirtualFor="let row of filteredTableItems">
+        <td *ngFor="let heading of atConfig.headings">{{row[heading.key]}}</td>
+      </tr>
+    </tbody>
+  </table>
+</cdk-virtual-scroll-viewport>
+
+

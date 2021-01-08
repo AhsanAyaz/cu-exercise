@@ -1,0 +1,10 @@
+:host {
+  width: 100%;
+  .home {
+    width: 80%;
+    margin: 0 auto;
+    &__heading {
+      margin-bottom: 20px;
+    }
+  }
+}

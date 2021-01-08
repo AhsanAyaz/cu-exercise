@@ -4,7 +4,7 @@ import { mergeMap, finalize } from 'rxjs/operators';
 export const httpRetryStrategy = ({
   maxRetryAttempts = 3,
   scalingDuration = 2000,
-  excludedStatusCodes = []
+  excludedStatusCodes = [] // should be able to use 401 etc later in an actual app
 }: {
   maxRetryAttempts?: number,
   scalingDuration?: number,
@@ -13,8 +13,6 @@ export const httpRetryStrategy = ({
   return attempts.pipe(
     mergeMap((error, i) => {
       const retryAttempt = i + 1;
-      // if maximum number of retries have been met
-      // or response is a status code we don't wish to retry, throw error
       if (
         retryAttempt > maxRetryAttempts ||
         excludedStatusCodes.find(e => e === error.status)
@@ -22,9 +20,6 @@ export const httpRetryStrategy = ({
         return throwError(error);
       }
       const retryAfter = scalingDuration;
-      console.log(
-        `Attempt ${retryAttempt}: retrying in ${retryAfter}ms`
-      );
       return timer(retryAfter);
     }),
     finalize(() => {})

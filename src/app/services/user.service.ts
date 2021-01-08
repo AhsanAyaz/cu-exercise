@@ -13,7 +13,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<ITableUser[]> {
-    return this.http.get<{results: IUser[]}>('https://randomuser.me/api?results=100')
+    return this.http.get<{results: IUser[]}>('https://randomuser.me/api?results=1000')
       .pipe(
         retryWhen(httpRetryStrategy()),
         map(res => res.results.map(user => ({

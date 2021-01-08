@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ScrollingModule } from '@angular/cdk/scrolling';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
@@ -22,7 +21,6 @@ import { APP_EFFECTS } from './store/app.effects';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ScrollingModule,
     StoreModule.forRoot(APP_REDUCERS, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot(APP_EFFECTS)

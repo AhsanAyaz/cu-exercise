@@ -1,17 +1,22 @@
-table {
-  thead {
-    th {
-      height: 42px;
-      cursor: pointer;
-      &:hover {
-        background-color: #eee;
+.scroll-viewport {
+  height: 300px;
+  width: 100%;
+  overflow: scroll;
+  table {
+    thead {
+      th {
+        height: 42px;
+        cursor: pointer;
+        &:hover {
+          background-color: #eee;
+        }
       }
     }
-  }
-  .mat-icon {
-    font-size: 20px;
-    position: relative;
-    top: 4px;
-    margin-left: 6px;
+    .mat-icon {
+      font-size: 20px;
+      position: relative;
+      top: 4px;
+      margin-left: 6px;
+    }
   }
 }

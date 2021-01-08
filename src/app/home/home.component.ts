@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         headings: HOME_TABLE_CONSTANTS.HEADINGS,
         data: users,
         tableClasses: 'table-striped',
-        sortingColumns: ['first', 'last', 'email']
+        sortingColumns: ['first', 'email'] // not filtering on 'last' for this example
       };
     });
   }

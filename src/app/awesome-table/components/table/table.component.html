@@ -3,7 +3,7 @@
     <input formControlName="searchTerm" type="text" class="form-control" id="searchInput" placeholder="{{atConfig.searchInputPlaceholder}}">
   </div>
 </form>
-<cdk-virtual-scroll-viewport [itemSize]="40"  style="height: 300px; width: 100%;">
+<cdk-virtual-scroll-viewport [itemSize]="40" class="scroll-viewport">
   <table class="table {{atConfig.tableClasses}} " style="width: 100%;" cdkDropListGroup>
     <thead>
       <tr cdkDropList
